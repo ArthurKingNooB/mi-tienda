@@ -105,3 +105,41 @@ document.querySelectorAll('.input-number-mobile').forEach(wrapper => {
   });
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const filterType = document.getElementById("filterType");
+  const filterOffer = document.getElementById("filterOffer");
+  const products = document.querySelectorAll("#productos .col-md-6, #productos .col-lg-3");
+
+  function filterProducts() {
+    const searchText = searchInput.value.toLowerCase().trim();
+    const typeFilter = filterType.value.toLowerCase();
+    const offerFilter = filterOffer.value;
+
+    products.forEach(product => {
+      const title = product.querySelector(".card-title").textContent.toLowerCase();
+      const type = product.getAttribute("data-type").toLowerCase();
+      const hasOffer = product.querySelector(".discount-badge") !== null;
+
+      const matchesSearch = title.includes(searchText);
+      const matchesType = typeFilter === "" || type === typeFilter;
+      const matchesOffer =
+        offerFilter === "" ||
+        (offerFilter === "oferta" && hasOffer) ||
+        (offerFilter === "normal" && !hasOffer);
+
+      if (matchesSearch && matchesType && matchesOffer) {
+        product.style.display = "";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  }
+
+  searchInput.addEventListener("input", filterProducts);
+  filterType.addEventListener("change", filterProducts);
+  filterOffer.addEventListener("change", filterProducts);
+
+  filterProducts(); // filtrar al cargar la página
+});
