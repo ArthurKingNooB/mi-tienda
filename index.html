@@ -245,9 +245,7 @@
 
 
   </main>
-<div class="text-center mt-4">
-      <button class="btn btn-success btn-lg" onclick="enviarPedidoWhatsApp()">Hacer pedido por WhatsApp</button>
-    </div>
+
 
     <!-- Resumen del pedido -->
     <div id="resumen" class="pedido-resumen"></div>
@@ -255,15 +253,23 @@
 
   <!-- Sección contacto -->
   <section id="contacto" class="container">
-    <h2>Contacto</h2>
-    <p>Podés contactarnos por WhatsApp o correo electrónico.</p>
-    <div class="d-flex justify-content-center mt-4">
-      <a href="https://wa.me/59891234567" target="_blank" class="btn btn-success btn-contact me-3">
-        <i class="bi bi-whatsapp me-1"></i> WhatsApp
-      </a>
-      <a href="mailto:correo@ejemplo.com" class="btn btn-primary btn-contact">
-        <i class="bi bi-envelope-fill me-1"></i> Email
-      </a>
+
+
+
+
+    <div class="container text-center mt-4">
+  <div class="mb-3">
+    <h2><label for="observaciones" class="form-label fw-semibold">Observaciones de Compra:</label></h2>
+    <textarea id="observaciones" class="form-control" rows="3" placeholder="Por ejemplo: Entregar a las 18hs, sin bolsa..."></textarea>
+  </div>
+<div class="text-center mt-4">
+  <button class="btn btn-success btn-lg" onclick="enviarPedidoWhatsApp()">Hacer pedido por WhatsApp</button>
+</div>
+</div>
+
+
+
+
     </div>
   </section>
 

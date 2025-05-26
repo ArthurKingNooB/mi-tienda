@@ -143,3 +143,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   filterProducts(); // filtrar al cargar la página
 });
+
+
+function enviarPedidoWhatsApp() {
+  const inputs = document.querySelectorAll('input[type="number"]');
+  const observaciones = document.getElementById('observaciones').value.trim();
+  let mensaje = 'Hola, quiero hacer el siguiente pedido:%0A';
+  let total = 0;
+  let hayPedido = false;
+
+  inputs.forEach(input => {
+    const cantidad = parseInt(input.value);
+    const nombre = input.dataset.nombre;
+    const precio = parseFloat(input.dataset.precio);
+
+    if (cantidad > 0) {
+      const subtotal = cantidad * precio;
+      mensaje += `• ${nombre} x ${cantidad} = $${subtotal.toFixed(2)}%0A`;
+      total += subtotal;
+      hayPedido = true;
+    }
+  });
+
+  if (!hayPedido) {
+    alert("No has seleccionado ningún producto.");
+    return;
+  }
+
+  mensaje += `%0ATotal: $${total.toFixed(2)}`;
+
+  if (observaciones !== '') {
+    mensaje += `%0A%0A📌 Observaciones: ${encodeURIComponent(observaciones)}`;
+  }
+
+  const numero = "59892420997";
+  const url = `https://wa.me/${numero}?text=${mensaje}`;
+  window.open(url, "_blank");}
