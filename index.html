@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Tienda</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Archivo CSS externo -->
+  <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-custom sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">🛒 Mi Tienda</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContenido">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#productos">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>
+        </ul>
+        <a href="https://wa.me/59891234567" target="_blank" class="btn btn-outline-light">
+          <i class="bi bi-whatsapp me-1"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>Todo lo que querés, en un solo lugar de calidad</h1>
+    <p>¡Nuestro catálogo de productos ofrece una variedad de alimentos frescos y saludables.</p>
+  </header>
+
+  <!-- Banner Oferta -->
+  <section id="bannerOferta" class="container">
+    ¡Oferta especial! Aprovechá hasta 30% de descuento en productos seleccionados.
+  </section>
+
+  <!-- Filtros de búsqueda -->
+  <section class="container mb-4">
+    <div class="row g-2">
+      <div class="col-md-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Buscar productos" />
+      </div>
+      <div class="col-md-4">
+        <select id="filterType" class="form-select">
+          <option value="">Todos los tipos</option>
+          <option value="Pan">Pan</option>
+          <option value="Mazapan">Mazapan</option>
+          <option value="Atun">Atun</option>
+          <option value="Limpiapisos">Limpiapisos</option>
+          <option value="Lavaloza">Lavaloza</option>
+          <option value="Leche">Leche</option>
+          <option value="Galletas">Galletas</option>
+          <option value="Jugo">Jugo</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select id="filterOffer" class="form-select">
+          <option value="">Todas</option>
+          <option value="oferta">Solo en oferta</option>
+          <option value="normal">Sin oferta</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <main id="productos" class="container my-5">
+    <div id="productList" class="row g-4">
+
+<div class="col-md-4 col-lg-3 mb-4">
+  <div class="card h-100 shadow-sm">
+    <img src="https://discouy.vtexassets.com/arquivos/ids/1834412-800-auto?v=638619289010230000&width=800&height=auto&aspect=true"
+      class="card-img-top" alt="Galletas de Chocolate" />
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Galletas de Chocolate</h5>
+      <p class="card-text">Paquete de 12 unidades.</p>
+
+      <label for="cantidad-2" class="mt-auto mb-3 fw-semibold">Cantidad:</label>
+      <div class="input-number-mobile">
+        <button type="button" class="btn-decrement" aria-label="Disminuir cantidad">−</button>
+        <input type="number" id="cantidad-2" min="0" value="0"
+          data-nombre="Galletas de Chocolate" data-precio="25.3" inputmode="numeric" pattern="[0-9]*" />
+        <button type="button" class="btn-increment" aria-label="Aumentar cantidad">+</button>
+      </div>
+    </div>
+    <div class="card-footer text-end fw-bold">
+      $25.30
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col-md-4 col-lg-3 mb-4">
+  <div class="card h-100 shadow-sm">
+    <img src="https://discouy.vtexassets.com/arquivos/ids/1834412-800-auto?v=638619289010230000&width=800&height=auto&aspect=true"
+      class="card-img-top" alt="Galletas de Chocolate" />
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Galletas de Chocolate</h5>
+      <p class="card-text">Paquete de 12 unidades.</p>
+      <label for="cantidad-2" class="mt-auto">Cantidad:</label>
+     <div class="input-number-mobile">
+        <button type="button" class="btn-decrement" aria-label="Disminuir cantidad">−</button>
+        <input type="number" id="cantidad-2" min="0" value="0"
+          data-nombre="Galletas de Chocolate" data-precio="25.3" inputmode="numeric" pattern="[0-9]*" />
+        <button type="button" class="btn-increment" aria-label="Aumentar cantidad">+</button>
+      </div>
+    </div>
+    <div class="card-footer text-end fw-bold">
+      $25.30
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-4 col-lg-3 mb-4">
+  <div class="card h-100 shadow-sm">
+    <img src="https://discouy.vtexassets.com/arquivos/ids/1834412-800-auto?v=638619289010230000&width=800&height=auto&aspect=true"
+      class="card-img-top" alt="Galletas de Chocolate" />
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Galletas de Chocolate</h5>
+      <p class="card-text">Paquete de 12 unidades.</p>
+      <label for="cantidad-2" class="mt-auto">Cantidad:</label>
+     <div class="input-number-mobile">
+        <button type="button" class="btn-decrement" aria-label="Disminuir cantidad">−</button>
+        <input type="number" id="cantidad-2" min="0" value="0"
+          data-nombre="Galletas de Chocolate" data-precio="25.3" inputmode="numeric" pattern="[0-9]*" />
+        <button type="button" class="btn-increment" aria-label="Aumentar cantidad">+</button>
+      </div>
+    </div>
+    <div class="card-footer text-end fw-bold">
+      $25.30
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-4 col-lg-3 mb-4">
+  <div class="card h-100 shadow-sm">
+    <img src="https://discouy.vtexassets.com/arquivos/ids/1834412-800-auto?v=638619289010230000&width=800&height=auto&aspect=true"
+      class="card-img-top" alt="Galletas de Chocolate" />
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Galletas de Chocolate</h5>
+      <p class="card-text">Paquete de 12 unidades.</p>
+      <label for="cantidad-2" class="mt-auto">Cantidad:</label>
+      <div class="input-number-mobile">
+        <button type="button" class="btn-decrement" aria-label="Disminuir cantidad">−</button>
+        <input type="number" id="cantidad-2" min="0" value="0"
+          data-nombre="Galletas de Chocolate" data-precio="25.3" inputmode="numeric" pattern="[0-9]*" />
+        <button type="button" class="btn-increment" aria-label="Aumentar cantidad">+</button>
+      </div>
+    </div>
+    <div class="card-footer text-end fw-bold">
+      $25.30
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-md-4 col-lg-3 mb-4">
+  <div class="card h-100 shadow-sm">
+    <img src="https://discouy.vtexassets.com/arquivos/ids/1834412-800-auto?v=638619289010230000&width=800&height=auto&aspect=true"
+      class="card-img-top" alt="Galletas de Chocolate" />
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Galletas de Chocolate</h5>
+      <p class="card-text">Paquete de 12 unidades.</p>
+      <label for="cantidad-2" class="mt-auto">Cantidad:</label>
+     <div class="input-number-mobile">
+        <button type="button" class="btn-decrement" aria-label="Disminuir cantidad">−</button>
+        <input type="number" id="cantidad-2" min="0" value="0"
+          data-nombre="Galletas de Chocolate" data-precio="25.3" inputmode="numeric" pattern="[0-9]*" />
+        <button type="button" class="btn-increment" aria-label="Aumentar cantidad">+</button>
+      </div>
+    </div>
+    <div class="card-footer text-end fw-bold">
+      $25.30
+    </div>
+  </div>
+</div>
+<!-- oferta -->
+<div class="col-md-4 col-lg-3 mb-4">
+  <div class="card h-100 shadow-sm position-relative">
+    
+    <div class="discount-badge" style="position: absolute; top: 10px; left: 10px; background: red; color: white; padding: 4px 8px; font-weight: bold; border-radius: 4px; z-index: 10;">
+      30% OFF
+    </div>
+
+    <img src="accets/mazapan paquetito.jfif" class="card-img-top" alt="Mazapan Paquete" />
+
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Mazapan Paquete</h5>
+      <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+    
+
+      <label for="cantidad-4" class="mt-auto">Cantidad:</label>
+     <div class="input-number-mobile">
+        <button type="button" class="btn-decrement" aria-label="Disminuir cantidad">−</button>
+        <input type="number" id="cantidad-2" min="0" value="0"
+          data-nombre="Galletas de Chocolate" data-precio="25.3" inputmode="numeric" pattern="[0-9]*" />
+        <button type="button" class="btn-increment" aria-label="Aumentar cantidad">+</button>
+      </div>
+    </div>
+     <div class="card-footer text-end fw-bold">
+   <p class="card-text mb-2">
+        <span class="original-price text-muted text-decoration-line-through">$43.50</span>
+        <strong class="discounted-price">$32.00</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+
+
+
+  </main>
+<div class="text-center mt-4">
+      <button class="btn btn-success btn-lg" onclick="enviarPedidoWhatsApp()">Hacer pedido por WhatsApp</button>
+    </div>
+
+    <!-- Resumen del pedido -->
+    <div id="resumen" class="pedido-resumen"></div>
+  </div>
+
+  <!-- Sección contacto -->
+  <section id="contacto" class="container">
+    <h2>Contacto</h2>
+    <p>Podés contactarnos por WhatsApp o correo electrónico.</p>
+    <div class="d-flex justify-content-center mt-4">
+      <a href="https://wa.me/59891234567" target="_blank" class="btn btn-success btn-contact me-3">
+        <i class="bi bi-whatsapp me-1"></i> WhatsApp
+      </a>
+      <a href="mailto:correo@ejemplo.com" class="btn btn-primary btn-contact">
+        <i class="bi bi-envelope-fill me-1"></i> Email
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Mi Tienda. Todos los derechos reservados.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JS para mostrar productos dinámicamente -->
+  <script src="script.js"></script>
+</body>
+</html>
