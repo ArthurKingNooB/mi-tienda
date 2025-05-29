@@ -156,3 +156,7 @@ function mostrarResumenProductos() {
 }
 
 document.getElementById('botonResumen').addEventListener('click', mostrarResumenProductos);
+
+
+
+  
