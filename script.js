@@ -161,26 +161,3 @@ document.getElementById('botonResumen').addEventListener('click', mostrarResumen
 
   
 
-
-  function verificarVisibilidadBotonWhatsApp() {
-    const botones = document.querySelectorAll('[onclick="enviarPedidoWhatsApp()"]');
-    const flotante = document.getElementById('botonFlotanteWhatsapp');
-
-    let mostrarFlotante = true;
-
-    botones.forEach(boton => {
-      const style = window.getComputedStyle(boton);
-      const visible = boton.offsetParent !== null && style.display !== 'none' && style.visibility !== 'hidden';
-
-      // Si hay otro botón visible que no sea el flotante, lo ocultamos
-      if (visible && boton.id !== 'botonFlotanteWhatsapp') {
-        mostrarFlotante = false;
-      }
-    });
-
-    flotante.style.display = mostrarFlotante ? 'flex' : 'none';
-  }
-
-  window.addEventListener('load', verificarVisibilidadBotonWhatsApp);
-  window.addEventListener('scroll', verificarVisibilidadBotonWhatsApp);
-  window.addEventListener('resize', verificarVisibilidadBotonWhatsApp);
