@@ -619,3 +619,59 @@ body {
   transform: scale(1.1);
 }
 
+/* Botón flotante de WhatsApp */
+.btn-flotante-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  z-index: 9999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  touch-action: none;
+}
+
+/* Animación al hacer clic */
+.btn-flotante-whatsapp.clicked {
+  animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Mensaje flotante estilo toast */
+.mensaje-wsp {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+.mensaje-wsp.visible {
+  opacity: 1;
+}

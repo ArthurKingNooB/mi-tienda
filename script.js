@@ -158,6 +158,47 @@ function mostrarResumenProductos() {
 document.getElementById('botonResumen').addEventListener('click', mostrarResumenProductos);
 
 
+// Mostrar mensaje + animación
+  function mostrarMensajeWsp(event) {
+    event.preventDefault();
 
+    const boton = document.getElementById("botonFlotanteWhatsapp");
+    const mensaje = document.getElementById("mensajeWsp");
+
+    boton.classList.add("clicked");
+    mensaje.classList.add("visible");
+
+    setTimeout(() => {
+      boton.classList.remove("clicked");
+      mensaje.classList.remove("visible");
+    }, 2000);
+  }
+
+  // Hacer el botón arrastrable táctil
+  let boton = document.getElementById("botonFlotanteWhatsapp");
+  let posX = 0, posY = 0, touchX = 0, touchY = 0;
+
+  boton.addEventListener("touchstart", function(e) {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  });
+
+  boton.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+    let deltaX = e.touches[0].clientX - touchX;
+    let deltaY = e.touches[0].clientY - touchY;
+
+    let rect = boton.getBoundingClientRect();
+    let newLeft = rect.left + deltaX;
+    let newTop = rect.top + deltaY;
+
+    boton.style.left = `${newLeft}px`;
+    boton.style.top = `${newTop}px`;
+    boton.style.right = 'auto';
+    boton.style.bottom = 'auto';
+
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: false });
   
 
