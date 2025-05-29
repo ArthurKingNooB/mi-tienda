@@ -155,50 +155,95 @@ function mostrarResumenProductos() {
     : 'No agregaste productos aún.';
 }
 
-document.getElementById('botonResumen').addEventListener('click', mostrarResumenProductos);
 
 
-// Mostrar mensaje + animación
-  function mostrarMensajeWsp(event) {
-    event.preventDefault();
 
-    const boton = document.getElementById("botonFlotanteWhatsapp");
-    const mensaje = document.getElementById("mensajeWsp");
 
-    boton.classList.add("clicked");
-    mensaje.classList.add("visible");
 
-    setTimeout(() => {
-      boton.classList.remove("clicked");
-      mensaje.classList.remove("visible");
-    }, 2000);
+
+
+// boton flotante
+
+
+const contenedor = document.getElementById('botonContenedor');
+const mensaje = document.getElementById('mensajeWsp');
+let isDragging = false, offsetX, offsetY;
+
+// Mostrar mensaje
+document.getElementById('botonWsp').addEventListener('click', () => {
+  mensaje.classList.add('visible');
+  setTimeout(() => mensaje.classList.remove('visible'), 3000);
+});
+
+// Touch y Drag
+contenedor.addEventListener('touchstart', dragStart);
+contenedor.addEventListener('touchmove', dragMove);
+contenedor.addEventListener('touchend', dragEnd);
+
+function dragStart(e) {
+  isDragging = true;
+  const rect = contenedor.getBoundingClientRect();
+  offsetX = e.touches[0].clientX - rect.left;
+  offsetY = e.touches[0].clientY - rect.top;
+
+  contenedor.style.transition = 'none';
+}
+
+function dragMove(e) {
+  if (!isDragging) return;
+  const x = e.touches[0].clientX - offsetX;
+  const y = e.touches[0].clientY - offsetY;
+
+  contenedor.style.top = `${y}px`;
+  contenedor.style.left = `${x}px`;
+  contenedor.style.right = 'auto';
+  contenedor.style.bottom = 'auto';
+}
+
+function dragEnd(e) {
+  isDragging = false;
+  contenedor.style.transition = 'all 0.s ease';
+
+  const x = e.changedTouches[0].clientX;
+  const y = e.changedTouches[0].clientY;
+
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  const toLeft = x < screenWidth / 2;
+  const toTop = y < screenHeight / 2;
+
+  // Reset clases
+  contenedor.classList.remove(
+    'esquina-superior-izquierda',
+    'esquina-superior-derecha',
+    'esquina-inferior-izquierda',
+    'esquina-inferior-derecha'
+  );
+
+  // Posicionar
+  if (toTop && toLeft) {
+    contenedor.classList.add('esquina-superior-izquierda');
+    mensaje.classList.remove('mensaje-izquierda');
+    mensaje.classList.add('mensaje-derecha');
+  } else if (toTop && !toLeft) {
+    contenedor.classList.add('esquina-superior-derecha');
+    mensaje.classList.remove('mensaje-derecha');
+    mensaje.classList.add('mensaje-izquierda');
+  } else if (!toTop && toLeft) {
+    contenedor.classList.add('esquina-inferior-izquierda');
+    mensaje.classList.remove('mensaje-izquierda');
+    mensaje.classList.add('mensaje-derecha');
+  } else {
+    contenedor.classList.add('esquina-inferior-derecha');
+    mensaje.classList.remove('mensaje-derecha');
+    mensaje.classList.add('mensaje-izquierda');
   }
 
-  // Hacer el botón arrastrable táctil
-  let boton = document.getElementById("botonFlotanteWhatsapp");
-  let posX = 0, posY = 0, touchX = 0, touchY = 0;
-
-  boton.addEventListener("touchstart", function(e) {
-    touchX = e.touches[0].clientX;
-    touchY = e.touches[0].clientY;
-  });
-
-  boton.addEventListener("touchmove", function(e) {
-    e.preventDefault();
-    let deltaX = e.touches[0].clientX - touchX;
-    let deltaY = e.touches[0].clientY - touchY;
-
-    let rect = boton.getBoundingClientRect();
-    let newLeft = rect.left + deltaX;
-    let newTop = rect.top + deltaY;
-
-    boton.style.left = `${newLeft}px`;
-    boton.style.top = `${newTop}px`;
-    boton.style.right = 'auto';
-    boton.style.bottom = 'auto';
-
-    touchX = e.touches[0].clientX;
-    touchY = e.touches[0].clientY;
-  }, { passive: false });
-  
+  // Limpiar estilos manuales
+  contenedor.style.top = '';
+  contenedor.style.left = '';
+  contenedor.style.right = '';
+  contenedor.style.bottom = '';
+}
 
