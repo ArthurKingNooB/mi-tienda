@@ -156,6 +156,32 @@ function mostrarResumenProductos() {
 }
 
 
+// Función para mostrar el resumen al instante al hacer clic
+function mostrarResumenProductos() {
+  const inputs = document.querySelectorAll('input[type="number"]');
+  let resumenHTML = '';
+  let total = 0;
+
+  inputs.forEach(input => {
+    const cantidad = parseInt(input.value);
+    const nombre = input.dataset.nombre;
+    const precio = parseFloat(input.dataset.precio);
+
+    if (!isNaN(cantidad) && cantidad > 0) {
+      const subtotal = cantidad * precio;
+      resumenHTML += `${nombre} x ${cantidad} = $${subtotal}<br>`;
+      total += subtotal;
+    }
+  });
+
+  const contenedor = document.getElementById('resumenProductos');
+  contenedor.innerHTML = resumenHTML
+    ? `<strong>Productos seleccionados:</strong><br>${resumenHTML}<br><strong>Total: $${total}</strong>`
+    : 'No agregaste productos aún.';
+}
+
+// Ejecutar al hacer clic en el botón
+document.getElementById('botonResumen').addEventListener('click', mostrarResumenProductos);
 
 
 
@@ -202,7 +228,7 @@ function dragMove(e) {
 
 function dragEnd(e) {
   isDragging = false;
-  contenedor.style.transition = 'all 0.s ease';
+  contenedor.style.transition = 'all 0.9s ease';
 
   const x = e.changedTouches[0].clientX;
   const y = e.changedTouches[0].clientY;
@@ -215,10 +241,10 @@ function dragEnd(e) {
 
   // Reset clases
   contenedor.classList.remove(
+    'esquina-inferior-derecha',
     'esquina-superior-izquierda',
     'esquina-superior-derecha',
-    'esquina-inferior-izquierda',
-    'esquina-inferior-derecha'
+    'esquina-inferior-izquierda'
   );
 
   // Posicionar
